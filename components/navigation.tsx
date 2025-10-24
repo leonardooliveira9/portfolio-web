@@ -36,7 +36,7 @@ export function Navigation() {
             onClick={() => scrollToSection("hero")}
             className="text-xl font-bold text-foreground hover:text-primary transition-colors"
           >
-            Leonardo Oliveira
+            Leo Dev
           </button>
 
           {/* Desktop Navigation */}
