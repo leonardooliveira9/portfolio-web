@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server"
+import { NextResponse } from "next/server";
 
 export async function GET() {
   const html = `
@@ -274,14 +274,13 @@ export async function GET() {
           
           <div class="education-item">
             <h3>- Ensino Médio Completo</h3>
-            <p>Instituição: Centro Educacional</p>
-            <p>São Francisco</p>
+            <p>Instituição: Centro Educacional São Francisco</p>
             <p>Ano de Conclusão: 2023</p>
           </div>
         </div>
         
         <div class="section" style="margin-top: 30px;">
-          <h2 class="section-title">Cursos Extras</h2>
+          <h2 class="section-title">CURSOS EXTRAS</h2>
           <ul class="courses-list">
             <li>Pacote Office</li>
             <li>Digitação</li>
@@ -309,93 +308,14 @@ export async function GET() {
         <div class="section">
           <h2 class="section-title">HABILIDADES</h2>
           
-          <div class="skill-item">
-            <span>Pacote Office</span>
-            <div class="skill-dots">
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot empty"></span>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <span>Informática</span>
-            <div class="skill-dots">
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <span>Comunicação</span>
-            <div class="skill-dots">
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <span>Trabalho em equipe</span>
-            <div class="skill-dots">
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <span>Produtividade</span>
-            <div class="skill-dots">
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <span>Autonomia</span>
-            <div class="skill-dots">
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot empty"></span>
-              <span class="dot empty"></span>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <span>Foco em resultados</span>
-            <div class="skill-dots">
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot empty"></span>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <span>Comprometimento</span>
-            <div class="skill-dots">
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
-          </div>
+          <div class="skill-item"><span>Pacote Office</span><div class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot empty"></span></div></div>
+          <div class="skill-item"><span>Informática</span><div class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>
+          <div class="skill-item"><span>Comunicação</span><div class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>
+          <div class="skill-item"><span>Trabalho em equipe</span><div class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>
+          <div class="skill-item"><span>Produtividade</span><div class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>
+          <div class="skill-item"><span>Autonomia</span><div class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot empty"></span><span class="dot empty"></span></div></div>
+          <div class="skill-item"><span>Foco em resultados</span><div class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot empty"></span></div></div>
+          <div class="skill-item"><span>Comprometimento</span><div class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>
         </div>
         
         <div class="section" style="margin-top: 30px;">
@@ -415,13 +335,13 @@ export async function GET() {
           </div>
           
           <div class="experience-item">
-            <h3>Jovem Aprendiz do Brasil</h3>
+            <h3>JOVEM APRENDIZ DO BRASIL</h3>
             <p class="role">Cargo: Jovem Aprendiz</p>
             <ul>
-              <li>Tarefas: Organização de documentos;</li>
-              <li>confecção de crachás; treinamento em</li>
-              <li>low code; criação de site e diversas tarefas</li>
-              <li>da área de TI</li>
+              <li>Organização de documentos</li>
+              <li>Confecção de crachás</li>
+              <li>Treinamento em low code</li>
+              <li>Criação de site e tarefas da área de TI</li>
             </ul>
             <p class="period">Ano: Junho 2021 a Junho 2023</p>
           </div>
@@ -431,12 +351,13 @@ export async function GET() {
   </div>
 </body>
 </html>
-  `
+  `;
 
   return new NextResponse(html, {
     headers: {
       "Content-Type": "text/html; charset=utf-8",
       "Content-Disposition": 'attachment; filename="Curriculo-Leonardo-Oliveira.html"',
+      "Cache-Control": "no-store",
     },
-  })
+  });
 }
