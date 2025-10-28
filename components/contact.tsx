@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Mail, MapPin, Phone } from "lucide-react"
+import { Mail, MapPin, Phone, Loader2, CheckCircle2, XCircle } from "lucide-react"
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -16,13 +16,39 @@ export function Contact() {
     email: "",
     message: "",
   })
+  const [isLoading, setIsLoading] = useState(false)
+  const [status, setStatus] = useState<{ type: "success" | "error" | null; message: string }>({
+    type: null,
+    message: "",
+  })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Aqui você pode adicionar a lógica para enviar o formulário
-    console.log("Form submitted:", formData)
-    alert("Mensagem enviada com sucesso!")
-    setFormData({ name: "", email: "", message: "" })
+    setIsLoading(true)
+    setStatus({ type: null, message: "" })
+
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setStatus({ type: "success", message: "Mensagem enviada com sucesso! Entrarei em contato em breve." })
+        setFormData({ name: "", email: "", message: "" })
+      } else {
+        setStatus({ type: "error", message: data.error || "Erro ao enviar mensagem. Tente novamente." })
+      }
+    } catch (error) {
+      setStatus({ type: "error", message: "Erro ao enviar mensagem. Verifique sua conexão e tente novamente." })
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -76,7 +102,7 @@ export function Contact() {
                     </div>
                     <div>
                       <p className="font-medium">Localização</p>
-                      <p className="text-muted-foreground">Qr 5 lote 33, Bairro São José</p>
+                      <p className="text-muted-foreground">Qr 115 lote 33, Bairro São José</p>
                       <p className="text-muted-foreground">São Sebastião/DF, Brasil</p>
                     </div>
                   </div>
@@ -99,6 +125,7 @@ export function Contact() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       required
+                      disabled={isLoading}
                     />
                   </div>
                   <div className="space-y-2">
@@ -110,6 +137,7 @@ export function Contact() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       required
+                      disabled={isLoading}
                     />
                   </div>
                   <div className="space-y-2">
@@ -118,13 +146,37 @@ export function Contact() {
                       id="message"
                       placeholder="Sua mensagem..."
                       rows={5}
-                      value={formData.message || ""}
+                      value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       required
+                      disabled={isLoading}
                     />
                   </div>
-                  <Button type="submit" className="w-full">
-                    Enviar Mensagem
+
+                  {status.type && (
+                    <div
+                      className={`flex items-center gap-2 p-3 rounded-lg ${
+                        status.type === "success" ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"
+                      }`}
+                    >
+                      {status.type === "success" ? (
+                        <CheckCircle2 className="h-5 w-5" />
+                      ) : (
+                        <XCircle className="h-5 w-5" />
+                      )}
+                      <p className="text-sm">{status.message}</p>
+                    </div>
+                  )}
+
+                  <Button type="submit" className="w-full" disabled={isLoading}>
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Enviando...
+                      </>
+                    ) : (
+                      "Enviar Mensagem"
+                    )}
                   </Button>
                 </form>
               </CardContent>
