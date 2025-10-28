@@ -2,12 +2,23 @@ import { NextResponse } from "next/server"
 
 export async function POST(request: Request) {
   try {
+    console.log("[v0] Recebendo requisição de envio de email")
     const { name, email, message } = await request.json()
+    console.log("[v0] Dados recebidos:", { name, email, messageLength: message?.length })
 
     // Validação básica
     if (!name || !email || !message) {
+      console.log("[v0] Validação falhou - campos faltando")
       return NextResponse.json({ error: "Todos os campos são obrigatórios" }, { status: 400 })
     }
+
+    // Verificar se a API key existe
+    if (!process.env.RESEND_API_KEY) {
+      console.log("[v0] ERRO: RESEND_API_KEY não configurada")
+      return NextResponse.json({ error: "Configuração de email não encontrada" }, { status: 500 })
+    }
+
+    console.log("[v0] Enviando email via Resend...")
 
     // Usando Resend para enviar email
     const response = await fetch("https://api.resend.com/emails", {
@@ -36,13 +47,30 @@ export async function POST(request: Request) {
       }),
     })
 
+    const responseData = await response.json()
+    console.log("[v0] Resposta do Resend:", { status: response.status, data: responseData })
+
     if (!response.ok) {
-      throw new Error("Falha ao enviar email")
+      console.log("[v0] Erro ao enviar email:", responseData)
+      return NextResponse.json(
+        {
+          error: `Erro ao enviar email: ${responseData.message || "Erro desconhecido"}`,
+          details: responseData,
+        },
+        { status: response.status },
+      )
     }
 
+    console.log("[v0] Email enviado com sucesso!")
     return NextResponse.json({ success: true, message: "Email enviado com sucesso!" })
   } catch (error) {
-    console.error("Erro ao enviar email:", error)
-    return NextResponse.json({ error: "Erro ao enviar mensagem. Tente novamente mais tarde." }, { status: 500 })
+    console.error("[v0] Erro ao enviar email:", error)
+    return NextResponse.json(
+      {
+        error: "Erro ao enviar mensagem. Tente novamente mais tarde.",
+        details: error instanceof Error ? error.message : "Erro desconhecido",
+      },
+      { status: 500 },
+    )
   }
 }
