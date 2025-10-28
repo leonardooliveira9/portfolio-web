@@ -118,7 +118,7 @@ export function Contact() {
                       id="message"
                       placeholder="Sua mensagem..."
                       rows={5}
-                      value={formData.message}
+                      value={formData.message || ""}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       required
                     />
