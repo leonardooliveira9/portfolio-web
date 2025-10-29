@@ -2,15 +2,17 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Mail, MapPin, Phone, Loader2, CheckCircle2, XCircle } from "lucide-react"
+import emailjs from "@emailjs/browser"
 
 export function Contact() {
+  const formRef = useRef<HTMLFormElement>(null)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,32 +26,28 @@ export function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("[v0] Iniciando envio de formulário")
     setIsLoading(true)
     setStatus({ type: null, message: "" })
 
-      try {
-    console.log("[v0] Enviando dados:", formData)
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
+    try {
+      // Enviar email usando EmailJS
+      await emailjs.send(
+        "service_0xygr5k", // Service ID (você vai criar no EmailJS)
+        "template_7v5dmdw", // Template ID (você vai criar no EmailJS)
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: "leonardooliveira2105@gmail.com",
+        },
+        "bie-wUMYcKBXO1ct1", // Public Key do EmailJS (você vai obter no site)
+      )
 
-    const data = await response.json()
-    console.log("[v0] Resposta recebida:", { status: response.status, data })
-
-      if (response.ok) {
-        setStatus({ type: "success", message: "Mensagem enviada com sucesso! Entrarei em contato em breve." })
-        setFormData({ name: "", email: "", message: "" })
-      } else {
-        setStatus({ type: "error", message: data.error || "Erro ao enviar mensagem. Tente novamente." })
-      }
+      setStatus({ type: "success", message: "Mensagem enviada com sucesso! Entrarei em contato em breve." })
+      setFormData({ name: "", email: "", message: "" })
     } catch (error) {
-      console.error("[v0] Erro ao enviar:", error)
-      setStatus({ type: "error", message: "Erro ao enviar mensagem. Verifique sua conexão e tente novamente." })
+      console.error("Erro ao enviar:", error)
+      setStatus({ type: "error", message: "Erro ao enviar mensagem. Tente novamente." })
     } finally {
       setIsLoading(false)
     }
@@ -120,11 +118,12 @@ export function Contact() {
                 <CardDescription>Preencha o formulário abaixo</CardDescription>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
                   <div className="space-y-2">
                     <Label htmlFor="name">Nome</Label>
                     <Input
                       id="name"
+                      name="from_name"
                       placeholder="Seu nome"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -136,6 +135,7 @@ export function Contact() {
                     <Label htmlFor="email">Email</Label>
                     <Input
                       id="email"
+                      name="from_email"
                       type="email"
                       placeholder="seu@email.com"
                       value={formData.email}
@@ -148,6 +148,7 @@ export function Contact() {
                     <Label htmlFor="message">Mensagem</Label>
                     <Textarea
                       id="message"
+                      name="message"
                       placeholder="Sua mensagem..."
                       rows={5}
                       value={formData.message}
