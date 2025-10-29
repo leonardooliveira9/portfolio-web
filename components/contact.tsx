@@ -24,10 +24,12 @@ export function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    console.log("[v0] Iniciando envio de formulário")
     setIsLoading(true)
     setStatus({ type: null, message: "" })
 
     try {
+      console.log("[v0] Enviando dados:", formData)
       const response = await fetch("/api/send-email", {
         method: "POST",
         headers: {
@@ -37,6 +39,7 @@ export function Contact() {
       })
 
       const data = await response.json()
+      console.log("[v0] Resposta recebida:", { status: response.status, data })
 
       if (response.ok) {
         setStatus({ type: "success", message: "Mensagem enviada com sucesso! Entrarei em contato em breve." })
@@ -45,6 +48,7 @@ export function Contact() {
         setStatus({ type: "error", message: data.error || "Erro ao enviar mensagem. Tente novamente." })
       }
     } catch (error) {
+      console.error("[v0] Erro ao enviar:", error)
       setStatus({ type: "error", message: "Erro ao enviar mensagem. Verifique sua conexão e tente novamente." })
     } finally {
       setIsLoading(false)
