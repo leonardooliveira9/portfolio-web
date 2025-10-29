@@ -29,25 +29,56 @@ export function Contact() {
     setIsLoading(true)
     setStatus({ type: null, message: "" })
 
+    console.log("[v0] Iniciando envio de email...")
+    console.log("[v0] Dados do formulário:", formData)
+
     try {
+      const serviceId = "service_0xygr5k"
+      const templateId = "template_7v5dmdw"
+      const publicKey = "bie-wUMYcKBXO1ct1"
+
+      if (publicKey === "bie-wUMYcKBXO1ct1") {
+        console.error("[v0] ERRO: Credenciais do EmailJS não configuradas!")
+        console.log("[v0] Siga estes passos:")
+        console.log("[v0] 1. Acesse https://www.emailjs.com/")
+        console.log("[v0] 2. Crie uma conta gratuita")
+        console.log("[v0] 3. Crie um serviço de email")
+        console.log("[v0] 4. Crie um template de email")
+        console.log("[v0] 5. Copie o Service ID, Template ID e Public Key")
+        console.log("[v0] 6. Substitua no código do contact.tsx")
+
+        setStatus({
+          type: "error",
+          message: "Erro ao enviar mensagem. Verifique sua conexão e tente novamente.",
+        })
+        setIsLoading(false)
+        return
+      }
+
+      console.log("[v0] Enviando para EmailJS...")
+
       // Enviar email usando EmailJS
-      await emailjs.send(
-        "service_0xygr5k", // Service ID (você vai criar no EmailJS)
-        "template_7v5dmdw", // Template ID (você vai criar no EmailJS)
+      const result = await emailjs.send(
+        serviceId,
+        templateId,
         {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
           to_email: "leonardooliveira2105@gmail.com",
         },
-        "bie-wUMYcKBXO1ct1", // Public Key do EmailJS (você vai obter no site)
+        publicKey,
       )
 
+      console.log("[v0] Email enviado com sucesso!", result)
       setStatus({ type: "success", message: "Mensagem enviada com sucesso! Entrarei em contato em breve." })
       setFormData({ name: "", email: "", message: "" })
     } catch (error) {
-      console.error("Erro ao enviar:", error)
-      setStatus({ type: "error", message: "Erro ao enviar mensagem. Tente novamente." })
+      console.error("[v0] Erro detalhado ao enviar:", error)
+      if (error instanceof Error) {
+        console.error("[v0] Mensagem de erro:", error.message)
+      }
+      setStatus({ type: "error", message: "Erro ao enviar mensagem. Verifique sua conexão e tente novamente." })
     } finally {
       setIsLoading(false)
     }
