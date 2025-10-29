@@ -28,18 +28,18 @@ export function Contact() {
     setIsLoading(true)
     setStatus({ type: null, message: "" })
 
-    try {
-      console.log("[v0] Enviando dados:", formData)
-      const response = await fetch("/api/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
+      try {
+    console.log("[v0] Enviando dados:", formData)
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
 
-      const data = await response.json()
-      console.log("[v0] Resposta recebida:", { status: response.status, data })
+    const data = await response.json()
+    console.log("[v0] Resposta recebida:", { status: response.status, data })
 
       if (response.ok) {
         setStatus({ type: "success", message: "Mensagem enviada com sucesso! Entrarei em contato em breve." })

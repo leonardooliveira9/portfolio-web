@@ -20,8 +20,8 @@ export async function POST(request: Request) {
 
     console.log("[v0] Enviando email via Resend...")
 
-    // Usando Resend para enviar email
-    const response = await fetch("https://api.resend.com/emails", {
+    // **CORREÇÃO: Usando Resend com importação correta**
+    const resendResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         from: "Portfolio <onboarding@resend.dev>",
-        to: "leonardooliveira2105@gmail.com",
+        to: "leonardooliveira2105@gmail.com", // Seu email de destino
         reply_to: email,
         subject: `Nova mensagem de ${name} - Portfolio`,
         html: `
@@ -47,17 +47,17 @@ export async function POST(request: Request) {
       }),
     })
 
-    const responseData = await response.json()
-    console.log("[v0] Resposta do Resend:", { status: response.status, data: responseData })
+    const responseData = await resendResponse.json()
+    console.log("[v0] Resposta do Resend:", { status: resendResponse.status, data: responseData })
 
-    if (!response.ok) {
+    if (!resendResponse.ok) {
       console.log("[v0] Erro ao enviar email:", responseData)
       return NextResponse.json(
         {
           error: `Erro ao enviar email: ${responseData.message || "Erro desconhecido"}`,
           details: responseData,
         },
-        { status: response.status },
+        { status: resendResponse.status },
       )
     }
 
