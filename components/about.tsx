@@ -15,7 +15,7 @@ export function About() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
               <p className="text-lg leading-relaxed">
-                Sou um desenvolvedor júnior de 19 anos, atualmente estagiário na BB TECNOLOGIA E SERVIÇOS há 1 ano, onde
+                Sou desenvolvedor, atualmente estagiário na BB TECNOLOGIA E SERVIÇOS há 1 ano, onde
                 trabalho diariamente com a plataforma ServiceNow. Tenho um perfil comunicativo e trabalho muito bem em
                 equipe, sendo extremamente paciente e comprometido com os projetos que participo.
               </p>
