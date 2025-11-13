@@ -33,7 +33,7 @@ export function Hero() {
               Entre em Contato
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <a href="/curriculo%20LEONARDO.pdf" download="curriculo LEONARDO.pdf">
+              <a href="/curriculo LEONARDO - atualizado.pdf" download="curriculo LEONARDO - atualizado.pdf">
                 <Download className="mr-2 h-4 w-4" />
                 Baixar Currículo
               </a>
