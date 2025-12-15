@@ -70,7 +70,7 @@ export function Contact() {
                     </div>
                     <div>
                       <p className="font-medium">Localização</p>
-                      <p className="text-muted-foreground">Qr 115 lote 33, Bairro São José</p>
+                      <p className="text-muted-foreground">Qr 5 lote 33, Bairro São José</p>
                       <p className="text-muted-foreground">São Sebastião/DF, Brasil</p>
                     </div>
                   </div>
