@@ -8,7 +8,7 @@ const education = [
     degree: "Análise e Desenvolvimento de Sistemas",
     period: "2025 - 2026",
     status: "Cursando",
-    semester: "3º Semestre",
+    semester: "4º Semestre",
     type: "Ensino Superior",
   },
   {
