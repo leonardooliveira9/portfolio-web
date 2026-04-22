@@ -23,7 +23,7 @@ export function Hero() {
               </span>
             </h1>
             <p className="text-xl sm:text-2xl text-muted-foreground max-w-2xl mx-auto text-balance">
-              Estagiário em ServiceNow | Desenvolvedor  | Análise e Desenvolvimento de Sistemas
+              Analsita de Testes Jr em ServiceNow | Desenvolvedor  | Análise e Desenvolvimento de Sistemas
             </p>
           </div>
 

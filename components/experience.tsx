@@ -5,8 +5,24 @@ import { Briefcase, Calendar } from "lucide-react"
 const experiences = [
   {
     company: "BB TECNOLOGIA E SERVIÇOS",
-    role: "Estagiário - ServiceNow Developer",
+    role: "Analista de Testes Jr - ServiceNow Developer",
     period: "2024 - Atual",
+    description:
+      "Atuação como Dev desenvolvendo soluções na plataforma ServiceNow, trabalhando com diversas funcionalidades e módulos da plataforma.",
+    highlights: [
+      "UI Builder - Desenvolvimento de interfaces",
+      "Workflow - Automação de processos",
+      "Service Portal - Criação de portais customizados",
+      "Scripting - JavaScript para customizações",
+      "Dashboards - Visualização de dados e relatórios",
+      "Low Code Development",
+    ],
+    duration: "1 ano",
+  },
+  {
+    company: "BB TECNOLOGIA E SERVIÇOS",
+    role: "Estagiário - ServiceNow Developer",
+    period: "2024 - 2026",
     description:
       "Atuação como estagiário desenvolvendo soluções na plataforma ServiceNow, trabalhando com diversas funcionalidades e módulos da plataforma.",
     highlights: [
@@ -17,7 +33,7 @@ const experiences = [
       "Dashboards - Visualização de dados e relatórios",
       "Low Code Development",
     ],
-    duration: "1 ano",
+    duration: "2 anos",
   },
   {
     company: "Jovem Aprendiz do Brasil",

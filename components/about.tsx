@@ -15,7 +15,7 @@ export function About() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
               <p className="text-lg leading-relaxed">
-                Sou desenvolvedor, atualmente estagiário na BB TECNOLOGIA E SERVIÇOS há 1 ano, onde
+                Sou desenvolvedor, atualmente Analista de Testes Jr na BB TECNOLOGIA E SERVIÇOS, onde
                 trabalho diariamente com a plataforma ServiceNow. Tenho um perfil comunicativo e trabalho muito bem em
                 equipe, sendo extremamente paciente e comprometido com os projetos que participo.
               </p>
@@ -31,7 +31,7 @@ export function About() {
               <div className="space-y-4">
                 <div>
                   <h3 className="font-semibold text-lg mb-2">Idade</h3>
-                  <p className="text-muted-foreground">19 anos</p>
+                  <p className="text-muted-foreground">20 anos</p>
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg mb-2">Localização</h3>
@@ -43,7 +43,7 @@ export function About() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg mb-2">Disponibilidade</h3>
-                  <p className="text-muted-foreground">Estagiário na BB Tecnologia</p>
+                  <p className="text-muted-foreground">Analista de Testes Jr na BB Tecnologia</p>
                 </div>
               </div>
             </Card>
