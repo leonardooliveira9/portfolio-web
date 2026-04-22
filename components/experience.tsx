@@ -6,7 +6,7 @@ const experiences = [
   {
     company: "BB TECNOLOGIA E SERVIÇOS",
     role: "Analista de Testes Jr - ServiceNow Developer",
-    period: "2024 - Atual",
+    period: "2026 - Atual",
     description:
       "Atuação como Dev desenvolvendo soluções na plataforma ServiceNow, trabalhando com diversas funcionalidades e módulos da plataforma.",
     highlights: [
