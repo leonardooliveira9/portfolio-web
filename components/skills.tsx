@@ -1,4 +1,3 @@
-import { Card, CardContent } from "@/components/ui/card"
 import { Code2, Database, Layout, Server, Wrench, Users } from "lucide-react"
 
 const skillCategories = [
@@ -10,7 +9,7 @@ const skillCategories = [
   {
     icon: Server,
     title: "Back-end",
-    skills: ["Python", "REST APIs", "Low Code Development", "JavaScript"],
+    skills: ["Python", "REST APIs", "Low Code", "JavaScript"],
   },
   {
     icon: Database,
@@ -20,96 +19,94 @@ const skillCategories = [
   {
     icon: Wrench,
     title: "ServiceNow",
-    skills: [
-      "UI Builder",
-      "Workflow",
-      "Service Portal",
-      "Scripting (JavaScript)",
-      "Dashboards",
-      "Platform Development",
-    ],
+    skills: ["UI Builder", "Workflow", "Service Portal", "Scripting", "Dashboards"],
   },
   {
     icon: Code2,
-    title: "Ferramentas & Produtividade",
-    skills: ["Pacote Office", "Excel", "Git", "VS Code", "Scrum", "Kanban"],
+    title: "Ferramentas",
+    skills: ["Git", "VS Code", "Scrum", "Kanban", "Pacote Office"],
   },
   {
     icon: Users,
     title: "Soft Skills",
-    skills: ["Trabalho em Equipe", "Comunicação", "Comprometimento", "Foco em Resultados", "Produtividade"],
+    skills: ["Trabalho em Equipe", "Comunicacao", "Comprometimento", "Foco em Resultados"],
   },
 ]
 
-const skillLevels = [
-  { name: "Pacote Office", level: 80 },
-  { name: "Informática", level: 100 },
-  { name: "Comunicação", level: 100 },
-  { name: "Trabalho em Equipe", level: 100 },
-  { name: "Produtividade", level: 100 },
-  { name: "Autonomia", level: 60 },
-  { name: "Foco em Resultados", level: 80 },
-  { name: "Comprometimento", level: 100 },
+const techStack = [
+  { name: "ServiceNow", level: 90 },
+  { name: "JavaScript", level: 75 },
+  { name: "Python", level: 70 },
+  { name: "SQL", level: 80 },
+  { name: "HTML/CSS", level: 85 },
+  { name: "Git", level: 70 },
 ]
 
 export function Skills() {
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
-      <div className="container mx-auto max-w-6xl">
+    <section id="skills" className="py-24 px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-5xl">
         <div className="space-y-12">
-          <div className="text-center space-y-4">
-            <h2 className="text-3xl sm:text-4xl font-bold">Habilidades & Tecnologias</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-              Ferramentas e tecnologias que utilizo no dia a dia
-            </p>
+          <div className="space-y-4">
+            <p className="text-primary font-mono text-sm">{"// skills"}</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground">Tecnologias & Habilidades</h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skillCategories.map((category, index) => {
-              const Icon = category.icon
-              return (
-                <Card key={index} className="hover:shadow-md transition-shadow">
-                  <CardContent className="pt-6">
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-3">
-                        <div className="p-2 rounded-lg bg-primary/10">
-                          <Icon className="h-6 w-6 text-primary" />
-                        </div>
-                        <h3 className="font-semibold text-lg">{category.title}</h3>
-                      </div>
-                      <ul className="space-y-2">
-                        {category.skills.map((skill, skillIndex) => (
-                          <li key={skillIndex} className="text-muted-foreground flex items-center gap-2">
-                            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                            {skill}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </CardContent>
-                </Card>
-              )
-            })}
-          </div>
-
-          <div className="mt-12">
-            <h3 className="text-2xl font-bold text-center mb-8">Níveis de Proficiência</h3>
-            <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              {skillLevels.map((skill, index) => (
+          {/* Tech Stack Progress */}
+          <div className="bg-card border border-border rounded-lg p-6">
+            <div className="flex items-center gap-2 mb-6 pb-4 border-b border-border">
+              <span className="w-3 h-3 rounded-full bg-destructive/60" />
+              <span className="w-3 h-3 rounded-full bg-yellow-500/60" />
+              <span className="w-3 h-3 rounded-full bg-green-500/60" />
+              <span className="ml-2 text-muted-foreground font-mono text-xs">tech-stack.json</span>
+            </div>
+            
+            <div className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
+              {techStack.map((tech, index) => (
                 <div key={index} className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <span className="font-medium">{skill.name}</span>
-                    <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                    <span className="font-mono text-sm text-foreground">{tech.name}</span>
+                    <span className="text-xs text-primary font-mono">{tech.level}%</span>
                   </div>
                   <div className="h-2 bg-muted rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-500"
-                      style={{ width: `${skill.level}%` }}
+                      className="h-full bg-primary transition-all duration-700 rounded-full"
+                      style={{ width: `${tech.level}%` }}
                     />
                   </div>
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Skill Categories Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {skillCategories.map((category, index) => {
+              const Icon = category.icon
+              return (
+                <div
+                  key={index}
+                  className="bg-card border border-border rounded-lg p-5 hover:border-primary/30 transition-colors group"
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 rounded-md bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                      <Icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <h3 className="font-semibold text-foreground">{category.title}</h3>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill, skillIndex) => (
+                      <span
+                        key={skillIndex}
+                        className="px-2 py-1 text-xs font-mono bg-muted text-muted-foreground rounded hover:text-foreground transition-colors"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>
