@@ -26,10 +26,11 @@ export function Navigation() {
 
   const navItems = [
     { id: "about", label: "Sobre" },
+    { id: "services", label: "Servicos" },
     { id: "experience", label: "Experiencia" },
-    { id: "education", label: "Formacao" },
     { id: "skills", label: "Skills" },
     { id: "projects", label: "Projetos" },
+    { id: "testimonials", label: "Depoimentos" },
     { id: "contact", label: "Contato" },
   ]
 

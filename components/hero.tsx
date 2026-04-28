@@ -44,6 +44,17 @@ export function Hero() {
 
       <div className="container mx-auto max-w-5xl relative z-10">
         <div className="space-y-8">
+          {/* Availability Badge */}
+          <div className="flex items-center gap-4 flex-wrap">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              <span className="text-green-400 text-sm font-medium">Disponivel para projetos</span>
+            </div>
+          </div>
+
           {/* Terminal-style intro */}
           <div className="flex items-center gap-2 text-muted-foreground font-mono text-sm">
             <Terminal className="h-4 w-4 text-primary" />
