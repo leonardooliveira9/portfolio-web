@@ -29,6 +29,7 @@ export function Navigation() {
     { id: "experience", label: "Experiencia" },
     { id: "education", label: "Formacao" },
     { id: "skills", label: "Skills" },
+    { id: "projects", label: "Projetos" },
     { id: "contact", label: "Contato" },
   ]
 
