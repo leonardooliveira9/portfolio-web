@@ -1,52 +1,50 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Briefcase, Calendar } from "lucide-react"
 
 const experiences = [
   {
-    company: "BB TECNOLOGIA E SERVIÇOS",
+    company: "BB TECNOLOGIA E SERVICOS",
     role: "Analista de Testes Jr - ServiceNow Developer",
     period: "2026 - Atual",
     description:
-      "Atuação como Dev desenvolvendo soluções na plataforma ServiceNow, trabalhando com diversas funcionalidades e módulos da plataforma.",
+      "Atuacao como Dev desenvolvendo solucoes na plataforma ServiceNow, trabalhando com diversas funcionalidades e modulos da plataforma.",
     highlights: [
-      "UI Builder - Desenvolvimento de interfaces",
-      "Workflow - Automação de processos",
-      "Service Portal - Criação de portais customizados",
-      "Scripting - JavaScript para customizações",
-      "Dashboards - Visualização de dados e relatórios",
-      "Low Code Development",
+      "UI Builder",
+      "Workflow",
+      "Service Portal",
+      "JavaScript",
+      "Dashboards",
+      "Low Code",
     ],
     duration: "1 ano",
   },
   {
-    company: "BB TECNOLOGIA E SERVIÇOS",
-    role: "Estagiário - ServiceNow Developer",
+    company: "BB TECNOLOGIA E SERVICOS",
+    role: "Estagiario - ServiceNow Developer",
     period: "2024 - 2026",
     description:
-      "Atuação como estagiário desenvolvendo soluções na plataforma ServiceNow, trabalhando com diversas funcionalidades e módulos da plataforma.",
+      "Atuacao como estagiario desenvolvendo solucoes na plataforma ServiceNow, trabalhando com diversas funcionalidades e modulos da plataforma.",
     highlights: [
-      "UI Builder - Desenvolvimento de interfaces",
-      "Workflow - Automação de processos",
-      "Service Portal - Criação de portais customizados",
-      "Scripting - JavaScript para customizações",
-      "Dashboards - Visualização de dados e relatórios",
-      "Low Code Development",
+      "UI Builder",
+      "Workflow",
+      "Service Portal",
+      "JavaScript",
+      "Dashboards",
+      "Low Code",
     ],
     duration: "2 anos",
   },
   {
     company: "Jovem Aprendiz do Brasil",
     role: "Jovem Aprendiz",
-    period: "Junho 2021 - Junho 2023",
+    period: "2021 - 2023",
     description:
-      "Atuação na área de TI com diversas responsabilidades relacionadas a suporte, desenvolvimento e organização.",
+      "Atuacao na area de TI com diversas responsabilidades relacionadas a suporte, desenvolvimento e organizacao.",
     highlights: [
-      "Organização de documentos",
-      "Confecção de crachás",
-      "Treinamento em low code",
-      "Criação de sites",
-      "Diversas tarefas da área de TI",
+      "Suporte TI",
+      "Low Code",
+      "Criacao de sites",
+      "Documentacao",
+      "Treinamentos",
     ],
     duration: "2 anos",
   },
@@ -54,53 +52,53 @@ const experiences = [
 
 export function Experience() {
   return (
-    <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto max-w-6xl">
+    <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8 bg-card/30">
+      <div className="container mx-auto max-w-5xl">
         <div className="space-y-12">
-          <div className="text-center space-y-4">
-            <h2 className="text-3xl sm:text-4xl font-bold">Experiência Profissional</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-              Minha trajetória profissional e principais conquistas
-            </p>
+          <div className="space-y-4">
+            <p className="text-primary font-mono text-sm">{"// experiencia"}</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground">Trajetoria Profissional</h2>
           </div>
 
-          <div className="space-y-6">
-            {experiences.map((exp, index) => (
-              <Card key={index} className="hover:shadow-md transition-shadow">
-                <CardHeader>
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                    <div className="space-y-1">
-                      <CardTitle className="flex items-center gap-2">
-                        <Briefcase className="h-5 w-5 text-primary" />
-                        {exp.role}
-                      </CardTitle>
-                      <CardDescription className="text-base font-medium text-foreground">{exp.company}</CardDescription>
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-border" />
+
+            <div className="space-y-8">
+              {experiences.map((exp, index) => (
+                <div key={index} className="relative pl-8 md:pl-20">
+                  {/* Timeline dot */}
+                  <div className="absolute left-0 md:left-8 top-2 -translate-x-1/2 w-3 h-3 rounded-full bg-primary border-4 border-background" />
+                  
+                  <div className="bg-card border border-border rounded-lg p-6 hover:border-primary/30 transition-colors">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
+                      <div>
+                        <h3 className="text-lg font-semibold text-foreground">{exp.role}</h3>
+                        <p className="text-primary font-mono text-sm">{exp.company}</p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Badge variant="outline" className="border-primary/30 text-primary font-mono text-xs">
+                          {exp.period}
+                        </Badge>
+                      </div>
                     </div>
-                    <div className="flex flex-col sm:items-end gap-2">
-                      <Badge variant="secondary" className="w-fit">
-                        <Calendar className="h-3 w-3 mr-1" />
-                        {exp.period}
-                      </Badge>
-                      <span className="text-sm text-muted-foreground">{exp.duration}</span>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-muted-foreground leading-relaxed">{exp.description}</p>
-                  <div>
-                    <h4 className="font-semibold mb-3">Principais Atividades:</h4>
-                    <ul className="grid sm:grid-cols-2 gap-2">
+                    
+                    <p className="text-muted-foreground mb-4">{exp.description}</p>
+                    
+                    <div className="flex flex-wrap gap-2">
                       {exp.highlights.map((highlight, idx) => (
-                        <li key={idx} className="flex items-center gap-2 text-muted-foreground">
-                          <span className="h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                        <span
+                          key={idx}
+                          className="px-2 py-1 text-xs font-mono bg-muted text-muted-foreground rounded"
+                        >
                           {highlight}
-                        </li>
+                        </span>
                       ))}
-                    </ul>
+                    </div>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
