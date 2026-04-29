@@ -174,32 +174,44 @@ export function Projects() {
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
                           className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-md font-mono text-sm hover:bg-primary/90 transition-colors"
                         >
                           <ExternalLink className="h-4 w-4" />
                           Ver Projeto
                         </a>
                       ) : (
-                        <span className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-muted text-muted-foreground rounded-md font-mono text-sm cursor-not-allowed">
+                        <button
+                          type="button"
+                          disabled
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-muted text-muted-foreground rounded-md font-mono text-sm cursor-not-allowed"
+                        >
                           <ExternalLink className="h-4 w-4" />
                           Projeto Interno
-                        </span>
+                        </button>
                       )}
                       {project.githubUrl ? (
                         <a
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
                           className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-card border border-border text-foreground rounded-md font-mono text-sm hover:border-primary hover:text-primary transition-colors"
                         >
                           <Github className="h-4 w-4" />
                           Ver Codigo
                         </a>
                       ) : (
-                        <span className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-card border border-border text-muted-foreground rounded-md font-mono text-sm cursor-not-allowed">
+                        <button
+                          type="button"
+                          disabled
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-card border border-border text-muted-foreground rounded-md font-mono text-sm cursor-not-allowed"
+                        >
                           <Github className="h-4 w-4" />
                           Codigo Privado
-                        </span>
+                        </button>
                       )}
                     </div>
                   </div>
