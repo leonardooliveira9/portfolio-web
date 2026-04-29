@@ -11,8 +11,8 @@ const projects = [
     description:
       "Desenvolvimento de interfaces customizadas usando UI Builder para melhorar a experiencia do usuario em portais de servico.",
     tags: ["ServiceNow", "UI Builder", "JavaScript", "CSS"],
-    githubUrl: "#",
-    liveUrl: "#",
+    githubUrl: null,
+    liveUrl: null,
     featured: true,
   },
   {
@@ -20,8 +20,8 @@ const projects = [
     title: "Automacao de Workflows",
     description: "Criacao e otimizacao de workflows automatizados no ServiceNow para processos de TI e atendimento.",
     tags: ["ServiceNow", "Workflow", "JavaScript", "Automation"],
-    githubUrl: "#",
-    liveUrl: "#",
+    githubUrl: null,
+    liveUrl: null,
     featured: true,
   },
   {
@@ -29,8 +29,8 @@ const projects = [
     title: "Service Portal Customizado",
     description: "Desenvolvimento de portal de servicos personalizado com widgets customizados e integracao com APIs.",
     tags: ["ServiceNow", "Service Portal", "AngularJS", "Bootstrap"],
-    githubUrl: "#",
-    liveUrl: "#",
+    githubUrl: null,
+    liveUrl: null,
     featured: true,
   },
   {
@@ -38,8 +38,8 @@ const projects = [
     title: "Dashboards e Relatorios",
     description: "Criacao de dashboards interativos e relatorios personalizados para visualizacao de metricas e KPIs.",
     tags: ["ServiceNow", "Dashboards", "Reporting", "Data Visualization"],
-    githubUrl: "#",
-    liveUrl: "#",
+    githubUrl: null,
+    liveUrl: null,
     featured: true,
   },
   {
@@ -47,7 +47,7 @@ const projects = [
     title: "Integracao REST API",
     description: "Desenvolvimento de integracoes REST para conectar ServiceNow com sistemas externos e automatizar processos.",
     tags: ["REST API", "JavaScript", "Integration", "JSON"],
-    githubUrl: "#",
+    githubUrl: null,
     liveUrl: null,
     featured: false,
   },
@@ -56,7 +56,7 @@ const projects = [
     title: "Script Includes & Business Rules",
     description: "Criacao de scripts server-side para logica de negocios complexa e automacao de processos.",
     tags: ["JavaScript", "GlideRecord", "Business Rules", "Script Include"],
-    githubUrl: "#",
+    githubUrl: null,
     liveUrl: null,
     featured: false,
   },
@@ -169,7 +169,7 @@ export function Projects() {
                     <div className="font-mono text-xs text-primary mb-2">$ open project</div>
                     <h4 className="text-lg font-semibold text-foreground mb-4 font-mono">{project.title}</h4>
                     <div className="flex flex-col gap-3">
-                      {project.liveUrl && (
+                      {project.liveUrl ? (
                         <a
                           href={project.liveUrl}
                           target="_blank"
@@ -179,8 +179,13 @@ export function Projects() {
                           <ExternalLink className="h-4 w-4" />
                           Ver Projeto
                         </a>
+                      ) : (
+                        <span className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-muted text-muted-foreground rounded-md font-mono text-sm cursor-not-allowed">
+                          <ExternalLink className="h-4 w-4" />
+                          Projeto Interno
+                        </span>
                       )}
-                      {project.githubUrl && (
+                      {project.githubUrl ? (
                         <a
                           href={project.githubUrl}
                           target="_blank"
@@ -190,6 +195,11 @@ export function Projects() {
                           <Github className="h-4 w-4" />
                           Ver Codigo
                         </a>
+                      ) : (
+                        <span className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-card border border-border text-muted-foreground rounded-md font-mono text-sm cursor-not-allowed">
+                          <Github className="h-4 w-4" />
+                          Codigo Privado
+                        </span>
                       )}
                     </div>
                   </div>
