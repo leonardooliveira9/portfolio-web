@@ -104,7 +104,7 @@ export function Hero() {
               </a>
             </Button>
             <Button size="lg" variant="outline" asChild className="border-border hover:bg-card hover:border-primary/50">
-              <a href="#experience">Ver Projetos</a>
+              <a href="#projects">Ver Projetos</a>
             </Button>
           </div>
 
